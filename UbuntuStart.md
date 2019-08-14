@@ -233,3 +233,15 @@ sudo service php7.0-fpm start</p>
 
 <p>Устанавливаем mysqli драйвер:<br />
 sudo apt-get install php7.0-mysqli</p>
+
+
+<h3>[23] RabbitMQ</h3>
+
+<p>echo "deb http://www.rabbitmq.com/debian/ testing main"  | sudo tee  /etc/apt/sources.list.d/rabbitmq.list > /dev/null<br />
+wget https://www.rabbitmq.com/rabbitmq-signing-key-public.asc<br />
+sudo apt-key add rabbitmq-signing-key-public.asc<br />
+sudo apt-get update<br />
+sudo apt-get install rabbitmq-server -y<br />
+sudo service rabbitmq-server start<br />
+sudo rabbitmq-plugins enable rabbitmq_management<br />
+sudo service rabbitmq-server restart</p>
