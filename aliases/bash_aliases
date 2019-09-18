@@ -1,0 +1,7 @@
+alias cm='git add . && git commit -m'
+alias sr='php bin/console debug:router'
+alias sm='php bin/console make:migration'
+alias smr='php bin/console doctrine:migrations:migrate --no-interaction'
+alias s='php bin/console'
+alias tu='php vendor/bin/codecept run unit';
+alias ta='php vendor/bin/codecept run acceptance';
