@@ -245,3 +245,12 @@ sudo apt-get install rabbitmq-server -y<br />
 sudo service rabbitmq-server start<br />
 sudo rabbitmq-plugins enable rabbitmq_management<br />
 sudo service rabbitmq-server restart</p>
+
+<h3>TeamViewer</h3>
+
+<p><a href="https://www.teamviewer.com/ru/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/linux/">Скачиваем deb-пакет</a><br />
+cd ~/Загрузки/<br />
+sudo dpkg -i teamviewer_14.7.1965_amd64.deb<br />
+Если появилась ошибка "При обработке следующих пакетов произошли ошибки: teamviewer"<br />
+Выполняем:<br />
+sudo apt-get -f install</p>
