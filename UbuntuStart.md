@@ -53,19 +53,38 @@ sudo gedit /etc/php/7.0/fpm/pool.d/www.conf<br />
 sudo service php7.0-fpm stop<br />
 sudo service php7.0-fpm start</p>
 
-<h3>[7] phpMyAdmin</h3>
+
+
+<h3>[7] Добавляем версии PHP</h3>
+
+<p>sudo add-apt-repository ppa:ondrej/php<br />
+sudo apt-get update<br />
+sudo apt-get install php7.1-fpm</p>
+
+<p>Включаем отображение всех ошибок:<br />
+sudo gedit /etc/php/7.0/fpm/pool.d/www.conf<br />
+добавляем строку: php_flag[display_errors] = on<br />
+sudo service php7.0-fpm stop<br />
+sudo service php7.0-fpm start</p>
+
+<p>Устанавливаем mysqli драйвер:<br />
+sudo apt-get install php7.0-mysqli</p>
+
+
+
+<h3>[8] phpMyAdmin</h3>
 
 <p>sudo apt-get install phpmyadmin<br />
 Вход в phpmyadmin: http://localhost/phpmyadmin/<br />
 Для входа должен быть настроен конфиг default в nginx (он появляется автоматически при установке nginx)</p>
 
-<h3>[8] Git</h3>
+<h3>[9] Git</h3>
 
 <p>sudo apt-get install git<br />
 git config --global user.email "Ваша_почта"<br />
 git config --global user.name "Ваше_имя"</p>
 
-<h3>[9] Установка phpStorm</h3>
+<h3>[10] Установка phpStorm</h3>
 
 <p>sudo apt remove openjdk*<br />
 sudo add-apt-repository ppa:webupd8team/java<br />
@@ -106,7 +125,7 @@ File > Settings > Languages & Frameworks > SQL Dialects<br />
 https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit</p>
 
 
-<h3>[10] Composer</h3>
+<h3>[11] Composer</h3>
 
 <p>sudo apt install curl<br />
 curl -sS https://getcomposer.org/installer -o composer-setup.php<br />
@@ -114,24 +133,24 @@ sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer<br 
 для проверки работы выполняем: composer - должно отобразиться информационное приветствие</p>
 
 
-<h3>[11] Node</h3>
+<h3>[12] Node</h3>
 <p>sudo apt-get install nodejs</p>
 
 
 
-<h3>[12] npm</h3>
+<h3>[13] npm</h3>
 <p>sudo apt-get install npm</p>
 
 
 
-<h3>[13] GIMP (обычно он установлен)</h3>
+<h3>[14] GIMP (обычно он установлен)</h3>
 
 <p>sudo apt-get install gimp<br />
 gimp<br />
 После установи запускаем Gimp, в меню "Окна" -> "Однооконный режим"</p>
 
 
-<h3>[14] GitKraken</h3>
+<h3>[15] GitKraken</h3>
 
 <p>sudo apt install gdebi<br />
 https://www.gitkraken.com/download<br />
@@ -139,18 +158,18 @@ https://www.gitkraken.com/download<br />
 sudo gdebi gitkraken-amd64.deb<br />
 для подтверждения установки необходимо нажать именно русскую "д"</p>
 
-<h3>[15] Skype</h3>
+<h3>[16] Skype</h3>
 
 <p>Заходим в менеджер приложений -> в поиске Skype -> устанавливаем</p>
 
 <p>Если не получается через менеджер приложений:<br />
 sudo snap install skype --classic</p>
 
-<h3>[16] Pidgin</h3>
+<h3>[17] Pidgin</h3>
 
 <p>sudo apt-get install pidgin</p>
 
-<h3>[17] MongoDB</h3>
+<h3>[18] MongoDB</h3>
 
 <p>sudo apt-get install mongodb<br />
 sudo apt-get update<br />
@@ -173,7 +192,7 @@ sudo gedit /etc/php/7.0/fpm/php.ini<br />
 sudo service php7.0-fpm restart<br />
 Проверяем: выполняем phpinfo() - должен появиться блок mongodb</p>
 
-<h3>[18] xDebug</h3>
+<h3>[19] xDebug</h3>
 
 <p>Ставим xDebug:<br />
 sudo apt-get install php-xdebug<br />
@@ -198,13 +217,32 @@ xdebug.extended_info=1</p>
 
 
 
-<h3>[19] Docker</h3>
+<h3>[20] Docker</h3>
 
-<p>coming soon</p>
+<p>sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common<br />
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -<br />
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"<br />
+sudo apt install docker-ce</p>
+   
+   
+<p>Проверка установки:<br />
+sudo docker run hello-world</p>
 
 
 
-<h3>[20] Telegram</h3>
+<h4>[21] Docker Compose Install</h4>
+
+<p>sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose<br />
+sudo chmod +x /usr/local/bin/docker-compose</p>
+
+
+<p>Проверка установки:<br />
+docker-compose --version</p>
+
+
+
+
+<h3>[22] Telegram</h3>
 
 <p>sudo add-apt-repository ppa:atareao/telegram<br />
 sudo apt update<br />
@@ -212,30 +250,13 @@ sudo apt install telegram</p>
 
 
 
-<h3>[21] FileZilla</h3>
+<h3>[23] FileZilla</h3>
 
 <p>sudo apt-get install filezilla</p>
 
 
 
-
-<h3>[22] Добавляем версих PHP 7.1</h3>
-
-<p>sudo add-apt-repository ppa:ondrej/php<br />
-sudo apt-get update<br />
-sudo apt-get install php7.1-fpm</p>
-
-<p>Включаем отображение всех ошибок:<br />
-sudo gedit /etc/php/7.0/fpm/pool.d/www.conf<br />
-добавляем строку: php_flag[display_errors] = on<br />
-sudo service php7.0-fpm stop<br />
-sudo service php7.0-fpm start</p>
-
-<p>Устанавливаем mysqli драйвер:<br />
-sudo apt-get install php7.0-mysqli</p>
-
-
-<h3>[23] RabbitMQ</h3>
+<h3>[24] RabbitMQ</h3>
 
 <p>echo "deb http://www.rabbitmq.com/debian/ testing main"  | sudo tee  /etc/apt/sources.list.d/rabbitmq.list > /dev/null<br />
 wget https://www.rabbitmq.com/rabbitmq-signing-key-public.asc<br />
@@ -246,7 +267,9 @@ sudo service rabbitmq-server start<br />
 sudo rabbitmq-plugins enable rabbitmq_management<br />
 sudo service rabbitmq-server restart</p>
 
-<h3>TeamViewer</h3>
+
+
+<h3>[25] TeamViewer</h3>
 
 <p><a href="https://www.teamviewer.com/ru/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/linux/">Скачиваем deb-пакет</a><br />
 cd ~/Загрузки/<br />
