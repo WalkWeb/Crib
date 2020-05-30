@@ -8,3 +8,4 @@ alias s='php bin/console'
 alias tu='php vendor/bin/codecept run unit';
 alias ta='php vendor/bin/codecept run acceptance';
 alias tapi='php vendor/bin/codecept run api';
+alias tt='php vendor/bin/phpunit';
