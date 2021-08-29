@@ -61,6 +61,9 @@
 
 `column_name TIMESTAMP DEFAULT CURRENT_TIMESTAMP`
 
+Изменить колонку без блокировки таблицы (есть нюансы - читайте документацию):
+
+`ALTER TABLE table CHANGE old_column new_column varchar(50), ALGORITHM=INPLACE, LOCK=NONE;`
 
 ## Логирование
 
