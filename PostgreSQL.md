@@ -121,3 +121,20 @@ INSERT INTO cities (id, the_geom, name) VALUES (1,ST_GeomFromText('POINT(-0.1257
 INSERT INTO cities (id, the_geom, name) VALUES (2,ST_GeomFromText('POINT(-81.233 42.983)',4326),'London, Ontario');
 INSERT INTO cities (id, the_geom, name) VALUES (3,ST_GeomFromText('POINT(27.91162491 -33.01529)',4326),'East London,SA');
 ```
+
+## Работает ли с таблицей VACUUM (сборщик мусора)
+
+`SELECT check_vacuum('my_table');`
+
+```
+CREATE FUNCTION check_vacuum(name text) RETURNS boolean
+    LANGUAGE sql SECURITY DEFINER
+AS $_$
+SELECT count(*)::int > 0
+FROM pg_stat_progress_vacuum
+WHERE relid::regclass = $1::regclass OR
+        relid::regclass::text in (
+        SELECT reltoastrelid::regclass::text FROM pg_class WHERE relname = $1
+    );
+$_$;
+```
