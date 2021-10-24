@@ -122,7 +122,7 @@ INSERT INTO cities (id, the_geom, name) VALUES (2,ST_GeomFromText('POINT(-81.233
 INSERT INTO cities (id, the_geom, name) VALUES (3,ST_GeomFromText('POINT(27.91162491 -33.01529)',4326),'East London,SA');
 ```
 
-## Работает ли с таблицей VACUUM (сборщик мусора)
+## Происходит ли сейчас чистка мусора (активен ли vacuum)
 
 `SELECT check_vacuum('my_table');`
 
