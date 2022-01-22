@@ -19,15 +19,19 @@
 
 `source путь_к_файлу/имя_файла.sql`
 
+Создать базу через консоль:
+
+`CREATE DATABASE database_name;`
+
 Добавить юзера через консоль:
 
-`CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';`
+`CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';`
 
 Дать права на базы:
 
-`GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';`
+`GRANT ALL PRIVILEGES ON database_name . * TO 'new_user'@'localhost';`
 
-Где первая `*` - это база, вторая `*` - тип прав (`*` - значит все права)
+Где `*` - тип прав (`*` - значит все права)
 
 Выход из консоли mysql: 
 
