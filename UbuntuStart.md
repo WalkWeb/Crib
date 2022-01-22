@@ -277,3 +277,16 @@ sudo dpkg -i teamviewer_14.7.1965_amd64.deb<br />
 Если появилась ошибка "При обработке следующих пакетов произошли ошибки: teamviewer"<br />
 Выполняем:<br />
 sudo apt-get -f install</p>
+
+
+# Protobuf
+
+`curl -LO $PB_REL/download/v3.19.3/protoc-3.19.3-linux-x86_64.zip`
+
+`unzip protoc-3.19.3-linux-x86_64.zip -d $HOME/.local`
+
+`export PATH="$PATH:$HOME/.local/bin"`
+
+`protoc --version` 
+
+Должны увидеть: libprotoc 3.19.3
