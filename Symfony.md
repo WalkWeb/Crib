@@ -1,4 +1,8 @@
 
+# Полезные заметки по Symfony
+
+## Добавление codeception-тестов в Symfony проект
+
 Выполняем и подтверждаем (`y`):
 
 `composer require "codeception/codeception" --dev`
@@ -42,7 +46,7 @@ modules:
               # pg_dump -h localhost -U postgres -F t -f /var/www/symfony-blog.loc/tests/_data/symfony_blog.sql.tar symfony_blog --no-owner
               dump: 'tests/_data/symfony_blog.sql.tar'
               populator: 'pg_restore --no-owner --clean --if-exists --dbname $dbname --username $user --host $host --port=$port $dump'
-error_level: "E_ERROR"
+error_level: "E_NOTICE"
 ```
 
 Создаем первый тест:
