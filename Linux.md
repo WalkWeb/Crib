@@ -1,3 +1,4 @@
+
 # Полезные команды по Linux
 
 Сведения о системе:
@@ -23,6 +24,7 @@
 Запись видео с экрана:
 
 `ffmpeg -y -f alsa -i pulse -f x11grab -s 1920x1080 -r 25 -i :0.0 -vcodec mpeg4 -qscale 0 -f avi -acodec pcm_s16le /var/www/video.avi`
+
 
 ## Linux screen
 
@@ -88,6 +90,11 @@
 Удалить все созданные правила
 
 `sudo auditctl -D`
+
+
+## Проверка открытых портов
+
+nc -zvw3 example.com 80
 
 
 ## Прочее
