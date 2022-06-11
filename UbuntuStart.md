@@ -374,7 +374,9 @@ xdebug.extended_info=1
 `sudo apt-get -f install`
 
 
-# Protobuf
+# [26] Protobuf
+
+`PB_REL="https://github.com/protocolbuffers/protobuf/releases"`
 
 `curl -LO $PB_REL/download/v3.19.3/protoc-3.19.3-linux-x86_64.zip`
 
