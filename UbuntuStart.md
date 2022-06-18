@@ -121,32 +121,83 @@ nginx!"
 phpStorm.
 
 
-## Донастраиваем phpStorm
+## Настраиваем phpStorm
 
-Изменение стиля на темный: Settings -> Editor -> Color Scheme -> выбираем Dracula (хотя сейчас темная тема стала по 
-умолчанию).
+1. Подключаем плагины `Symfony Support` и `Php Inspections`
 
-Отключаем браузеры в правом верхнем углу</b>: Settings -> Tools -> Web Browser -> Снимаем все галочки
+Settings -> Plugins
 
-Чиним горячие клавиши в русской расладке (проблема в новых версиях исчезла):
+2. Улучшаем шаблоны класса/интерфейса/трейта - дефолтные некорректны: отсутствует пустая строка в конце (а она должна быть
+по PSR), а также нет `declare(strict_types=1)` что является стандартом для хорошего кода.
 
-- Создаем папку fix в домашней дирректории юзера
-- `git clone https://github.com/zheludkovm/LinuxJavaFixes.git fix`
-- `sudo gedit /opt/phpstorm/bin/phpstorm64.vmoptions`
-- Добавляем строку: -javaagent:/home/walk/fix/build/LinuxJavaFixes-1.0.0-SNAPSHOT.jar  (!!! слово walk заменяем на свое имя пользователя !!!)
-- Перезапускаем phpstorm
+Settings -> Editor -> File and Code Templates
 
-Отключаем подстветку html кода:
+PHP Class
+```php
+<?php
+
+declare(strict_types=1);
+
+#if (${NAMESPACE})
+namespace ${NAMESPACE};
+#end
+
+class ${NAME} {
+
+}
+
+```
+
+PHP Interface
+```php
+<?php
+
+#if (${NAMESPACE})
+namespace ${NAMESPACE};
+#end
+
+interface ${NAME} {
+
+}
+
+```
+
+PHP Trait
+```php
+<?php
+#parse("PHP File Header.php")
+
+declare(strict_types=1);
+
+#if (${NAMESPACE})
+namespace ${NAMESPACE};
+#end
+
+trait ${NAME} {
+
+}
+
+```
+
+3. Включаем отображение измененных файлов в панели Git (внизу):
+
+Settings -> Version Control -> Commit -> снимаем галочку с пункта `Use non-modal commit interface`
+
+4. Отключаем браузеры в правом верхнем углу: 
+
+Settings -> Tools -> Web Browser -> Снимаем все галочки
+
+5. Отключаем подстветку html кода: 
 
 Settings -> Editor -> Color Scheme -> General -> Code -> Injected language fragment -> снимаем галочку с цвета фона #364135
 
-Подключаем SQL диалект:
+6. Подключаем SQL диалект:
 
 File > Settings > Languages & Frameworks > SQL Dialects
 
 Подключаем MySQL диалект
 
-Еще может понадобиться такая настройка:
+7. Еще может понадобиться такая настройка:
 
 https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 
