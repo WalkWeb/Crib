@@ -387,3 +387,8 @@ xdebug.extended_info=1
 `protoc --version` 
 
 Должны увидеть: libprotoc 3.19.3
+
+
+# [27] PostMan
+
+sudo snap install postman
