@@ -123,14 +123,14 @@ phpStorm.
 
 ## Настраиваем phpStorm
 
-1. Подключаем плагины `Symfony Support` и `Php Inspections`
+1. Подключаем плагины `Symfony Support` и `Php Inspections`:
 
-Settings -> Plugins
+Settings > Plugins (набираем в поиске названия плагинов, устанавливаем, перезапускаем phpStorm)
 
 2. Улучшаем шаблоны класса/интерфейса/трейта - дефолтные некорректны: отсутствует пустая строка в конце (а она должна быть
 по PSR), а также нет `declare(strict_types=1)` что является стандартом для хорошего кода.
 
-Settings -> Editor -> File and Code Templates
+Settings > Editor > File and Code Templates
 
 PHP Class
 ```php
@@ -181,15 +181,15 @@ trait ${NAME} {
 
 3. Включаем отображение измененных файлов в панели Git (внизу):
 
-Settings -> Version Control -> Commit -> снимаем галочку с пункта `Use non-modal commit interface`
+Settings > Version Control > Commit > снимаем галочку с пункта `Use non-modal commit interface`
 
 4. Отключаем браузеры в правом верхнем углу: 
 
-Settings -> Tools -> Web Browser -> Снимаем все галочки
+Settings > Tools > Web Browser > Снимаем все галочки
 
 5. Отключаем подстветку html кода: 
 
-Settings -> Editor -> Color Scheme -> General -> Code -> Injected language fragment -> снимаем галочку с цвета фона #364135
+Settings > Editor > Color Scheme > General > Code > Injected language fragment > снимаем галочку с цвета фона #364135
 
 6. Подключаем SQL диалект:
 
@@ -197,7 +197,11 @@ File > Settings > Languages & Frameworks > SQL Dialects
 
 Подключаем MySQL диалект
 
-7. Еще может понадобиться такая настройка:
+7. Включаем выравнивание элементов в массивах:
+
+File > Settings > Editor > Code Style > PHP > Wrapping and Braces > Array initializer > Align key-value pairs
+
+8. Еще может понадобиться такая настройка:
 
 https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 
