@@ -69,3 +69,91 @@ composer require --dev doctrine/doctrine-fixtures-bundle
 `php vendor/bin/codecept run unit`
 
 Если ошибок нет - значит все успешно. Теперь можно писать свои unit и приемочные тесты.
+
+## Хранение кэша на Redis
+
+`docker-compose.yml`
+
+```yaml
+  redis:
+    container_name: redis
+    image: redis:7.0
+    ports:
+      - ${REDIS_PORT}:6379
+    volumes:
+      - ${SERVER_HOME}/redis/data:/data/redis
+    networks:
+      - you_network
+```
+
+`cache.yaml`
+
+```yaml
+framework:
+    cache:
+        app: cache.adapter.redis
+        default_redis_provider: redis://localhost
+        prefix_seed: oos/api-notifier
+```
+
+Код-пример для контроллера:
+
+```php
+    /**
+     * @Route("/test/{id}", name="test")
+     * @param string $id
+     * @param EntityManagerInterface $entityManager
+     * @param CacheInterface $cache
+     * @return Response
+     * @throws InvalidArgumentException
+     */
+    public function test(string $id, EntityManagerInterface $entityManager, CacheInterface $cache): Response
+    {
+        /** @var User $stock */
+        $stock = $cache->get($id, function (ItemInterface $item) use ($id, $entityManager) {
+
+            echo 'No Cache<br />';
+
+            echo 'Create key: ' . $item->getKey() . '<br />';
+
+            return $entityManager->getRepository(User::class)->findOneBy([
+                'id' => $id,
+            ]);
+        });
+
+        return new Response("{$stock->getId()}, {$stock->getEmail()}");
+    }
+```
+
+Запускаем сервер:
+
+`symfony server:start`
+
+Открываем страницу вида `localdomain.loc/test/1`
+
+```
+No Cache
+Create key: 270378f0-b29c-4bf6-b7d1-7a64d6e212ff
+270378f0-b29c-4bf6-b7d1-7a64d6e212ff, admin@mail.com
+```
+
+При обновлении страницы:
+
+```
+270378f0-b29c-4bf6-b7d1-7a64d6e212ff, admin@notificator.com
+```
+
+Проверить, что кэш сохранился именно в Redis:
+
+1. Заходим в контейнер
+
+`sudo docker exec -it redis redis-cli`
+
+2. Смотрим сохраненные ключи:
+
+```
+127.0.0.1:6379> keys *
+1) "gTPBdlcdoq:270378f0-b29c-4bf6-b7d1-7a64d6e212ff"
+127.0.0.1:6379> get gTPBdlcdoq:270378f0-b29c-4bf6-b7d1-7a64d6e212ff
+"O:15:\"App\\Entity\\User\":6:{...}"
+```
