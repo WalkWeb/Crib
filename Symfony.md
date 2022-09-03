@@ -157,3 +157,10 @@ Create key: 270378f0-b29c-4bf6-b7d1-7a64d6e212ff
 127.0.0.1:6379> get gTPBdlcdoq:270378f0-b29c-4bf6-b7d1-7a64d6e212ff
 "O:15:\"App\\Entity\\User\":6:{...}"
 ```
+
+## Исправляем ошибку с flex.symfony.com
+
+В 2022 году появилась ошибка, когда в проекте на симфони перестает работать composer - ни добавить ни удалить какой-либо 
+пакет, ругается на доступ к flex.symfony.com. Исправляется следующей командой:
+
+`composer update symfony/flex --no-plugins --no-scripts`
