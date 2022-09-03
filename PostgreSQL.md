@@ -36,15 +36,15 @@
 
 Создать бд:
 
-`CREATE DATABASE symfony_blog;`
+`CREATE DATABASE "symfony_blog";`
 
 Создать пользователя:
 
-`CREATE USER symfony_blog_user password '12345';`
+`CREATE USER "symfony_blog_user" password '12345';`
 
 Дать все привилегии на базу:
 
-`GRANT ALL PRIVILEGES ON DATABASE symfony_blog TO symfony_blog_user;`
+`GRANT ALL PRIVILEGES ON DATABASE "symfony_blog" TO "symfony_blog_user";`
 
 Прочее:
 
