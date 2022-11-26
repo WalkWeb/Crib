@@ -164,3 +164,76 @@ Create key: 270378f0-b29c-4bf6-b7d1-7a64d6e212ff
 пакет, ругается на доступ к flex.symfony.com. Исправляется следующей командой:
 
 `composer update symfony/flex --no-plugins --no-scripts`
+
+## Доработка EntityManager в Doctrine
+
+Родной EntityManager в Doctrine не держит стабильное соединение с базой - в случае падения базы он не пытается к ней
+переподключиться (хотя падение могло быть на пару секунд), если была SQL-ошибка, то он просто закрывает EntityManager.
+Если в обычных http-запросах это допустимо, то когда на php пишут воркеры, которые постоянно обрабатывают данные в 
+каком-нибудь брокере сообщений - уже нет.
+
+Соответственно нужно дорабатывать, добавляя свою прослойку над EntityManager. 
+
+Обертка над EntityManager:
+
+```php
+class EntityManagerDecorator implements EntityManagerInterface
+{
+    private ObjectManager $entityManager;
+    private ManagerRegistry $doctrine;
+
+    public function __construct(ObjectManager $entityManager, ManagerRegistry $doctrine)
+    {
+        $this->entityManager = $entityManager;
+        $this->doctrine = $doctrine;
+    }
+
+    /**
+     * @param $object
+     * @return void
+     * @throws Exception
+     */
+    public function persist($object): void
+    {
+        $this->correctionConnect();
+        $this->entityManager->persist($object);
+    }
+
+    /**
+     * @return void
+     * @throws Exception
+     */
+    public function flush(): void
+    {
+        $this->correctionConnect();
+        $this->entityManager->flush();
+    }
+
+
+    private function correctionConnect(): void
+    {
+        // For errors:
+        // SQLSTATE[57P01]: Admin shutdown: 7 FATAL:  terminating connection due to administrator command
+        // SQLSTATE[08006] [7] could not translate host name "postgres" to address: Temporary failure in name resolution
+        if ($this->entityManager->getConnection()->ping() === false) {
+            $this->entityManager->getConnection()->close();
+            $this->entityManager->getConnection()->connect();
+        }
+
+        // For error "The EntityManager is closed"
+        if (!$this->entityManager->isOpen()) {
+            $this->doctrine->resetManager();
+            $this->entityManager = $this->doctrine->getManager();
+        }
+    }
+    
+    // Все другие методы для EntityManagerInterface перебрасываются напрямую на базовый EntityManager
+}
+```
+
+Настройка `config/services.yaml`, чтобы декоратор использовался по умолчанию при зависимости на EntityManagerInterface:
+
+```yaml
+App\Proxy\EntityManagerDecorator:
+    decorates: 'doctrine.orm.entity_manager'
+```
