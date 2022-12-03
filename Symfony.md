@@ -237,3 +237,7 @@ class EntityManagerDecorator implements EntityManagerInterface
 App\Proxy\EntityManagerDecorator:
     decorates: 'doctrine.orm.entity_manager'
 ```
+
+Также необходимо установить пакет `symfony/proxy-manager-bridge`:
+
+`composer require symfony/proxy-manager-bridge`
