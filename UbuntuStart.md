@@ -220,6 +220,8 @@ File > Settings > Editor > Code Style > PHP > Wrapping and Braces > Array initia
 
 https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 
+9. Настройки шрифта (для себя): font: `Monospaced`, size: `15`
+
 
 ## [12] Composer
 
