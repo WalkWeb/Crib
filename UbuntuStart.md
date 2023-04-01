@@ -1,11 +1,26 @@
 # Настройка рабочей среды на Ubuntu 16.04
 
-## [1] Добавления русского языка в ввод текста
+## [1] Ubuntu 20+ Темная тема
+
+Настройки -> Внешний вид -> Темная тема
+
+
+## [2] Добавления русского языка в раскладку
+
+Для Ubuntu 16:
 
 Параметры системы -> Ввод текста -> Добавляем русский язык
 
+Для Ubuntu 18+:
 
-## [2] Установка Google Chrome
+`sudo apt install gnome-tweaks`
+
+Лаунчер -> поиск приложения "Доп. настройки"
+
+Клавиатура и мышь -> Дополнительные параметры раскладки -> Переключение на другую раскладку "Alt+Shift"
+
+
+## [3] Установка Google Chrome
 
 `wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -`
 
@@ -16,7 +31,7 @@
 `sudo apt-get install google-chrome-stable`
 
 
-## [3] Nginx
+## [4] Nginx
 
 `sudo apt-get update`
 
@@ -32,7 +47,7 @@ nginx!"
 `sudo chmod -R 777 /etc/nginx/sites-enabled`
 
 
-## [4] MySQL
+## [5] MySQL
 
 `sudo apt-get install mysql-server`
 
@@ -43,7 +58,7 @@ nginx!"
 `sudo apt-get install php7.0-mysqli`
 
 
-## [5] Создаем первый локальный домен test.loc
+## [6] Создаем первый локальный домен test.loc
 
 Для простоты локальной разработки даем права 777 на /var/www (НИКОГДА не делайте так на боевом сервере):
 
@@ -65,7 +80,7 @@ nginx!"
 работать
 
 
-## [6] Установка PHP
+## [7] Установка PHP
 
 На примере версии 7.4, если у вас, например, 8.0 - подставьте нужные цифры.
 
@@ -84,7 +99,7 @@ nginx!"
 `sudo service php7.4-fpm start`
 
 
-## [7] Добавляем версии PHP
+## [8] Добавляем версии PHP
 
 `sudo add-apt-repository ppa:ondrej/php`
 
@@ -93,7 +108,7 @@ nginx!"
 `sudo apt-get install php7.2-fpm`
 
 
-## [8] phpMyAdmin
+## [9] phpMyAdmin
 
 `sudo apt-get install phpmyadmin`
 
@@ -102,7 +117,7 @@ nginx!"
 Для входа должен быть корректно настроен конфиг default в nginx (смотрите примеры конфигов в директории nginx)
 
 
-## [9] Git
+## [10] Git
 
 `sudo apt-get install git`
 
@@ -111,7 +126,7 @@ nginx!"
 `git config --global user.name "Ваше_имя"`
 
 
-## [10] Установка phpStorm
+## [11] Установка phpStorm
 
 Сейчас проще всего установить phpStorm через JetBrains Toolbox.
 
@@ -206,7 +221,7 @@ File > Settings > Editor > Code Style > PHP > Wrapping and Braces > Array initia
 https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 
 
-## [11] Composer
+## [12] Composer
 
 `sudo apt install curl`
 
@@ -217,7 +232,7 @@ https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 Для проверки работы выполняем: composer - должно отобразиться информационное приветствие
 
 
-## [12] Node
+## [13] Node
 
 `sudo apt-get install nodejs`
 
@@ -226,12 +241,12 @@ https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 Чтобы установить нужную версию, и в целом управлять версиями используйте [nvm](https://github.com/nvm-sh/nvm)
 
 
-## [13] npm
+## [14] npm
 
 `sudo apt-get install npm`
 
 
-## [14] GIMP (обычно он установлен)
+## [15] GIMP (обычно он установлен)
 
 `sudo apt-get install gimp`
 
@@ -240,7 +255,7 @@ https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 После установи запускаем Gimp, в меню "Окна" -> "Однооконный режим"
 
 
-## [15] GitKraken
+## [16] GitKraken
 
 `sudo apt install gdebi`
 
@@ -253,7 +268,7 @@ https://www.gitkraken.com/download
 Для подтверждения установки необходимо нажать именно русскую "д".
 
 
-## [16] Skype
+## [17] Skype
 
 Заходим в менеджер приложений -> в поиске Skype -> устанавливаем
 
@@ -262,12 +277,12 @@ https://www.gitkraken.com/download
 `sudo snap install skype --classic`
 
 
-## [17] Pidgin
+## [18] Pidgin
 
 `sudo apt-get install pidgin`
 
 
-## [18] MongoDB
+## [19] MongoDB
 
 `sudo apt-get install mongodb`
 
@@ -322,7 +337,7 @@ https://www.gitkraken.com/download
 Проверяем: выполняем phpinfo() - должен появиться блок mongodb
 
 
-## [19] xDebug
+## [20] xDebug
 
 Ставим xDebug:
 
@@ -355,7 +370,7 @@ xdebug.extended_info=1
 После настройки необходимо ОБЯЗАТЕЛЬНО перезапустить phpStorm (сразу работать не будет)
 
 
-## [20] Docker
+## [21] Docker
 
 `sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common`
 
@@ -370,7 +385,7 @@ xdebug.extended_info=1
 `sudo docker run hello-world`
 
 
-## [21] Docker Compose Install
+## [22] Docker Compose Install
 
 `sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
 
@@ -381,7 +396,7 @@ xdebug.extended_info=1
 `docker-compose --version`
 
 
-## [22] Telegram
+## [23] Telegram
 
 `sudo add-apt-repository ppa:atareao/telegram`
 
@@ -390,12 +405,12 @@ xdebug.extended_info=1
 `sudo apt install telegram`
 
 
-## [23] FileZilla
+## [24] FileZilla
 
 `sudo apt-get install filezilla`
 
 
-## [24] RabbitMQ
+## [25] RabbitMQ
 
 `echo "deb http://www.rabbitmq.com/debian/ testing main"  | sudo tee  /etc/apt/sources.list.d/rabbitmq.list > /dev/null`
 
@@ -414,7 +429,7 @@ xdebug.extended_info=1
 `sudo service rabbitmq-server restart`
 
 
-## [25] TeamViewer
+## [26] TeamViewer
 
 Скачиваем deb-пакет:
 
@@ -429,7 +444,7 @@ xdebug.extended_info=1
 `sudo apt-get -f install`
 
 
-# [26] Protobuf
+# [27] Protobuf
 
 `PB_REL="https://github.com/protocolbuffers/protobuf/releases"`
 
@@ -444,6 +459,18 @@ xdebug.extended_info=1
 Должны увидеть: libprotoc 3.19.3
 
 
-# [27] PostMan
+# [28] PostMan
 
 sudo snap install postman
+
+
+# [29] Генерация SSH-ключей
+
+`ssh-keygen -t rsa`
+
+Нажимаем несколько раз Enter, подтвержая все параметры по умолчанию.
+
+Распечатать полученный ключ:
+
+`cat ~/.ssh/id_rsa.pub`
+

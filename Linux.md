@@ -26,17 +26,6 @@
 `ffmpeg -y -f alsa -i pulse -f x11grab -s 1920x1080 -r 25 -i :0.0 -vcodec mpeg4 -qscale 0 -f avi -acodec pcm_s16le /var/www/video.avi`
 
 
-# Генерация SSH-ключей
-
-Генерация:
-
-`ssh-keygen -t rsa`
-
-Вывести публичный ключ (чтобы скопировать, например, в GitLab):
-
-`cat ~/.ssh/id_rsa.pub`
-
-
 ## Linux screen
 
 Список существующих скринов:
