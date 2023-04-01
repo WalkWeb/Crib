@@ -10,4 +10,8 @@ alias ta='php vendor/bin/codecept run acceptance';
 alias tapi='php vendor/bin/codecept run api';
 alias tt='php vendor/bin/phpunit';
 alias ttf='php vendor/bin/phpunit --filter';
+alias ccf='php vendor/bin/codecept run Unit --filter=';
 alias d='sudo docker exec -it';
+alias du='sudo docker-compose up -d';
+alias dd='sudo docker-compose down';
+alias ds='sudo docker-compose ps';
