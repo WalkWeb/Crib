@@ -15,3 +15,4 @@ alias d='sudo docker exec -it';
 alias du='sudo docker-compose up -d';
 alias dd='sudo docker-compose down';
 alias ds='sudo docker-compose ps';
+alias dcc='docker compose exec app codecept clean';
