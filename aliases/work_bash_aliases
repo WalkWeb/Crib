@@ -1,0 +1,19 @@
+alias cm='git add . && git commit -m'
+alias sr='php bin/console debug:router'
+alias sm='php bin/console make:migration'
+alias smr='php bin/console doctrine:migrations:migrate --no-interaction'
+alias sme='php bin/console make:entity';
+alias smc='php bin/console make:controller';
+alias s='php bin/console'
+alias tu='php vendor/bin/codecept run unit';
+alias tuf='php vendor/bin/codecept run Unit --filter';
+alias ta='php vendor/bin/codecept run acceptance';
+alias tapi='php vendor/bin/codecept run Api --env=test';
+alias tt='php vendor/bin/codecept run Unit';
+alias ttf='php vendor/bin/codecept run Unit --env=test --filter';
+alias aaf='php vendor/bin/codecept run Api --env=test --filter';
+alias d='docker exec -it';
+alias du='docker-compose up -d'
+alias dd='docker-compose down'
+alias ds='docker-compose ps'
+alias php='docker-compose exec app php'
