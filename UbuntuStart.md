@@ -82,7 +82,22 @@ nginx!"
 
 ## [7] Установка PHP
 
-На примере версии 7.4, если у вас, например, 8.0 - подставьте нужные цифры.
+8.2:
+
+`sudo add-apt-repository ppa:ondrej/php`
+
+`sudo apt install php8.2`
+
+Сразу базовые пакеты:
+
+`sudo apt install php-xml`
+`sudo apt-get install php-mbstring`
+
++ Для локальной разработки:
+
+`sudo apt-get install php-xdebug`
+
+(старые версии) На примере версии 7.4, если у вас, например, 8.0 - подставьте нужные цифры.
 
 `sudo apt-get install php-fpm php-mysql`
 
@@ -225,8 +240,6 @@ https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 
 ## [12] Composer
 
-`sudo apt install curl`
-
 `curl -sS https://getcomposer.org/installer -o composer-setup.php`
 
 `sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer`
@@ -347,7 +360,7 @@ https://www.gitkraken.com/download
 
 `sudo phpenmod xdebug`
 
-`sudo service php7.0-fpm restart`
+`sudo service php7.0-fpm restart` (для 8+ не актуально)
 
 `sudo gedit /etc/php/7.0/mods-available/xdebug.ini`
 
