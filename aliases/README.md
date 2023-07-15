@@ -1,5 +1,7 @@
-<p>Добавить алиасы:<br />
-sudo gedit ~/.bash_aliases</p>
+Добавить алиасы:
 
-<p>Применить их сразу:<br />
-. ~/.bashrc</p>
+`sudo nano ~/.bash_aliases`
+
+Применить их сразу:
+
+`. ~/.bashrc`
