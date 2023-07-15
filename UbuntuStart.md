@@ -285,11 +285,19 @@ https://www.gitkraken.com/download
 
 ## [17] Skype
 
+**Через менеджер приложений**
+
 Заходим в менеджер приложений -> в поиске Skype -> устанавливаем
 
-Если не получается/не находит через менеджер приложений устанавливаем через snap:
+**Установка через snap**
 
 `sudo snap install skype --classic`
+
+**Установка напрямую:**
+
+`wget https://repo.skype.com/latest/skypeforlinux-64.deb`
+
+`sudo apt install ./skypeforlinux-64.deb`
 
 
 ## [18] Pidgin
