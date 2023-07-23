@@ -19,3 +19,4 @@ alias du='docker-compose up -d'
 alias dd='docker-compose down'
 alias ds='docker-compose ps'
 alias php='docker-compose exec app php'
+alias dcc='docker compose exec app codecept clean';
