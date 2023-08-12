@@ -15,8 +15,9 @@ alias tt='php vendor/bin/codecept run Unit';
 alias ttf='php vendor/bin/codecept run Unit --env=test --filter';
 alias aaf='php vendor/bin/codecept run Api --env=test --filter';
 alias d='docker exec -it';
-alias du='docker-compose up -d'
-alias dd='docker-compose down'
-alias ds='docker-compose ps'
-alias php='docker-compose exec app php'
+alias du='docker compose up -d'
+alias dd='docker compose down'
+alias ds='docker compose ps'
+alias duf='docker compose up -d --build --remove-orphans';
 alias dcc='docker compose exec app codecept clean';
+alias dc='php bin/console doctrine:cache:clear-metadata';
