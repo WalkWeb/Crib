@@ -497,3 +497,11 @@ sudo snap install postman
 
 `cat ~/.ssh/id_rsa.pub`
 
+# [30] При проблемах со snap
+
+Иногда программы устанавливавшиеся через snap ломаются вместе с самим snap (это можно сделать, например, выставив права
+777 на папку /var), чтобы исправить это span проще удалить и поставить заново:
+
+`sudo apt autoremove --purge snapd`
+
+`sudo apt install snapd`
