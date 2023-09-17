@@ -19,5 +19,5 @@ alias du='docker compose up -d'
 alias dd='docker compose down'
 alias ds='docker compose ps'
 alias duf='docker compose up -d --build --remove-orphans';
-alias dcc='docker compose exec app codecept clean';
+alias dcc='php vendor/bin/codecept clean';
 alias dc='php bin/console doctrine:cache:clear-metadata';
