@@ -12,6 +12,7 @@
 `mkdir -p ~/go; echo "export GOPATH=$HOME/go" >> ~/.bashrc`
 
 `echo "export PATH=$PATH:$HOME/go/bin:/usr/local/go/bin" >> ~/.bashrc`
+
 `source ~/.bashrc`
 
 Чтобы убедиться, что никаких проблем с путями нет, установите какой-нибудь пакет:
@@ -19,6 +20,28 @@
 `go get github.com/gorilla/websocket`
 
 И если никаких ошибок не произошло (в случае успеха ничего не выводится) - значит все нормально.
+
+## Примечание по установке
+
+Сразу после установки и выполнения `source ~/.bashrc` go будет работать только в этом терминале. Чтобы go заработал в
+любых терминалах необходимо перезагрузить компьютер.
+
+## Ошибка "_cgo_export.c:3:10: fatal error: stdlib.h"
+
+Иногда после установки (ошибка встречалась на Ubuntu 20) может появиться ошибка:
+
+```
+$ go run main.go 
+# runtime/cgo
+_cgo_export.c:3:10: fatal error: stdlib.h: Нет такого файла или каталога
+    3 | #include <stdlib.h>
+      |          ^~~~~~~~~~
+compilation terminated.
+```
+
+Исправляется выполнением:
+
+`sudo apt install --reinstall build-essential`
 
 ## Удаление
 
