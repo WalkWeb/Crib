@@ -133,3 +133,11 @@ nc -zvw3 example.com 80
 Убить фоновую программу по id:
 
 `kill %123`
+
+Передача файлов по ssh:
+
+`scp /path/to/file user@255.255.255.255:/new/path/`
+
+Директории со всеми поддиректории и файлами:
+
+`scp -r /path/to/directory/ root@185.105.224.221:/new/path`
