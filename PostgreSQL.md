@@ -161,3 +161,25 @@ $_$;
 необходимо выяснить виновного. Для этого заходим в консоль и выполняем:
 
 `SELECT * from pg_stat_activity;`
+
+## Логирование всех запросов
+
+Открываем файл конфига (указав свою версию):
+
+`sudo gedit /etc/postgresql/9.5/main/postgresql.conf`
+
+В конец файла добавляем (в конец, чтобы потом, когда нужно будет отключить или еще раз включить логирование - не 
+приходилось править строки по всему файлу):
+
+`log_statement = 'all'`
+
+`log_directory = 'pg_log'`
+
+`log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'`
+
+`logging_collector = on`
+
+Затем перезагружаем postgres:
+
+`sudo service postgresql restart`
+
