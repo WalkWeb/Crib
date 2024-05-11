@@ -26,13 +26,9 @@
 
 ## Работа через консоль
 
-Вход без пароля:
+Вход:
 
-`psql -U postgres -h localhost`
-
-Вход с паролем:
-
-`sudo -u postgres psql`
+`psql -U user -h 127.0.0.1 -p 5432 -W password`
 
 Создать бд:
 
