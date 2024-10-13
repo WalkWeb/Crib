@@ -141,3 +141,7 @@ nc -zvw3 example.com 80
 Директории со всеми поддиректории и файлами:
 
 `scp -r /path/to/directory/ root@185.105.224.221:/new/path`
+
+Запуск команды от другого юзера (в текущем примере от www-data запускается `composer install`):
+
+`su -l www-data -s /bin/bash -c "cd $PWD; composer install"`
