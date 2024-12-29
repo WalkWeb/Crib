@@ -145,3 +145,7 @@ nc -zvw3 example.com 80
 Запуск команды от другого юзера (в текущем примере от www-data запускается `composer install`):
 
 `su -l www-data -s /bin/bash -c "cd $PWD; composer install"`
+
+Удалить все файлы с расширением *.html в директории и всех поддиректориях:
+
+`find . -type f -name "*.html" -exec rm -v {} \;`
