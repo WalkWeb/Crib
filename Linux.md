@@ -149,3 +149,10 @@ nc -zvw3 example.com 80
 Удалить все файлы с расширением *.html в директории и всех поддиректориях:
 
 `find . -type f -name "*.html" -exec rm -v {} \;`
+
+До какой даты годен ssl-сертификат, на любом домене. Обратите внимание, что название домена нужно указать два раза:
+
+```
+echo | openssl s_client -servername domain.com -connect domain.com:443 \
+| openssl x509 -noout -dates
+```
