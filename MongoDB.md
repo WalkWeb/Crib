@@ -4,9 +4,9 @@
 
 `/etc/init.d/mongodb status`
 
-Вход через консоль: 
+Вход через консоль (на старых версиях достаточно `mongo`): 
 
-`mongo`
+`mongosh -u user -p password`
 
 Показать текущие базы: 
 
@@ -28,9 +28,13 @@
 
 `show collections;`
 
-Показать содержимое текущей бд: 
+Показать содержимое текущей коллекции: 
 
 `db.mycol.find();`
+
+Удалить все записи в коллекции:
+
+`db.mycol.remove({})`
 
 Создание бекапа:
 
@@ -41,4 +45,3 @@ sudo mongodump --db database --out /var/backups/\`date +"%m-%d-%y"\`
 Импорт базы из бекапа:
 
 `mongorestore -d database /var/backups/mondodump`
-
