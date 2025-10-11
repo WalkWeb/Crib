@@ -94,3 +94,7 @@
 Добавить команду при старте:
 
 `tail -f /dev/null`
+
+## Локальное расположение volumes на Ubuntu
+
+`/var/lib/docker/volumes/`
