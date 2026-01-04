@@ -124,6 +124,30 @@ nc -zvw3 example.com 80
 `lshw -C disk`
 
 
+## Создание своего VPN PPTP сервера
+
+1) Покупаем любой, самый дешевый европейский VPS, с OC Ubuntu 22. Важно: 24 не подойдет, т.к. там исключили pptpd из 
+белых списков пакетов, и нужно будет устанавливать из исходников, что потребует дополнительных ненужных действий.
+
+2) Подключаемся по ssh к VPS и выполняем команды:
+
+`apt update`
+
+`apt install ufw`
+
+`apt install pptpd`
+
+`git clone --depth=1 https://github.com/bedefaced/vpn-install.git`
+
+`vpn-install/pptp/install.sh`
+
+Везде нажимаем Enter и только в конце указываем свой логин и пароль
+
+Готово
+
+[Источник](https://docs.google.com/document/d/1V4Q-VHtrvPpXXhfXgcvTa7bxBnSsIVWjA12ZNQgjAlA/edit?tab=t.0) (там есть 
+недочеты - не сказано о проблемах с Ubuntu 24, пропущены команды на установку ufw и pptpd)
+
 ## Прочее
 
 Запуск программы в фоне:
