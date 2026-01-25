@@ -8,6 +8,10 @@
 
 `docker compose up -d --build --remove-orphans`
 
+## Пересобрать контейнер `app` без учета кэша:
+
+`docker compose build app --no-cache`
+
 ## Остановить контейнеры
 
 `docker compose down`
